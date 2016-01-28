@@ -20,20 +20,20 @@ class Bill(models.Model):
             ('other', 'Other'),
         )
 
-    bill_id = models.CharField(max_length=20)
-    bill_type = models.CharField(max_length=9, choices=BILL_TYPES)
-    chamber = models.CharField(max_length=5, choices=CHAMBERS)
+    bill_id = models.CharField(max_length=(255))
+    bill_type = models.CharField(max_length=(255), choices=BILL_TYPES)
+    chamber = models.CharField(max_length=(255), choices=CHAMBERS)
     congress = models.IntegerField()
     cosponsors_count = models.IntegerField()
-    enacted_as = models.CharField(max_length=50, null=True, blank=True)
+    enacted_as = models.CharField(max_length=(255), null=True, blank=True)
     introduced_on = models.DateField()
     last_action_at = models.DateField()
     last_version_on = models.DateField()
     last_vote_at = models.DateField(null=True, blank=True)
     number = models.IntegerField()
     official_title = models.TextField()
-    popular_title = models.CharField(max_length=254, null=True, blank=True)
-    short_title = models.CharField(max_length=254, null=True, blank=True)
+    popular_title = models.CharField(max_length=(255), null=True, blank=True)
+    short_title = models.CharField(max_length=(255), null=True, blank=True)
     sponsor = models.ForeignKey(Legislator)
 
     def __str__(self):
